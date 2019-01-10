@@ -1,0 +1,29 @@
+{
+  "name": "task_mangerapi",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gowthamrn4/task_mangerAPI.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gowthamrn4/task_mangerAPI/issues"
+  },
+  "homepage": "https://github.com/gowthamrn4/task_mangerAPI#readme",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4",
+    "jsonwebtoken": "^8.4.0",
+    "mongoose": "^5.4.3",
+    "morgan": "^1.9.1",
+    "node-restful": "^0.2.6",
+    "nodemon": "^1.18.9"
+  }
+}
