@@ -7,8 +7,7 @@ var path = require("path");
 
 
 
-// var app = express();
-// var db = mongoose.connect("mongodb://localhost:27017/schoolApp",{ useNewUrlParser: true });
+
  var db = mongoose.connect("mongodb://gowthamrn:Gowthamrn4@ds253324.mlab.com:53324/task_manager",{ useNewUrlParser: true });
 
 const mongodb = require('mongodb');
