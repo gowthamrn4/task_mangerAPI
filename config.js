@@ -1,6 +1,6 @@
 module.exports = {
 
     'secret': 'ilovescotchyscotch',
-    'database': 'mongodb://school:admin1@ds263740.mlab.com:63740/schooladmin'    
+    'database': 'mongodb://gowthamrn:Gowthamrn4@ds253324.mlab.com:53324/task_manager'    
 
 };

@@ -13,9 +13,7 @@ app.set('superSecret', config.secret);
 
 var adduser=function (req,res){
     var token = req.headers['x-access-token'];
-    var rollno =req.body.rollno;
     var role = req.body.role;
-    console.log(rollno)         
                 var id={
                     email:req.body.email,
                 }
@@ -23,10 +21,6 @@ var adduser=function (req,res){
                     console.log(result);
                     if(result===null){
                         var user=new User(req.body);
-                        if(role ==="student"){
-                            user.rollno= rollno;
-                            console.log(user.rollno)
-                        }
                         user.save(function(err){
                             if(err){
                                 res.send('cannot reqister')
@@ -88,6 +82,70 @@ var deleteuser = function(req,res){
     };
 }
 
+
+var updateOffline=function(req,res){
+    var token = req.headers['x-access-token'];
+    var email = req.body.email;
+    var status = req.body.status;
+    if(token){
+        jwt.verify(token,app.get('superSecret'),function(err,decoded){
+            if(err){
+                return res.json({success:false,message:'Faild To Find User'});
+            }else{
+                User.findOneAndUpdate({email},{status}, function(err, result) {
+                   if(!err){
+                       res.send(result);
+                       console.log(result);
+                   }
+                })
+            }
+        });
+    }else {
+    
+        // if there is no token
+        // return an error
+        return res.status(403).send({ 
+            success: false, 
+            message: 'No token provided.' 
+        });
+
+ 
+    };
+}
+
+
+/* find online users */
+var findOnline=function(req,res){
+    var token = req.headers['x-access-token'];
+    var status = req.body.status;
+    console.log(status)
+    if(token){
+        jwt.verify(token,app.get('superSecret'),function(err,decoded){
+            if(err){
+                return res.json({success:false,message:'Faild To Find User'});
+            }else{
+                User.find({status}, function(err, result) {
+                  if(!err){
+                      res.send(result);
+                      console.log(result)
+                  }
+                })
+            }
+        });
+    }else {
+    
+        // if there is no token
+        // return an error
+        return res.status(403).send({ 
+            success: false, 
+            message: 'No token provided.' 
+        });
+
+ 
+    };
+}
+/*end find Online users */
+
 var finduser=function(req,res){
     var token = req.headers['x-access-token'];
     var role = req.body.role;
@@ -146,10 +204,10 @@ var getusers=function(req,res){
 }
 
 var login=function(req,res){
-      
-
+    var email = req.body.email; 
+    var status;
     // find the user
-    User.findOne({
+   User.findOne({
          email: req.body.email
       }, function(err, user) {
         if (err) {
@@ -164,7 +222,12 @@ var login=function(req,res){
           if (user.password != req.body.password) {
             res.json({ success: false, message: 'Authentication failed. Wrong password.' });
           } else {
-    
+              status = 1;
+                User.findOneAndUpdate({email},{status},function(err,result){
+                    if(!err){
+                      console.log("email"+email+status)
+                    }
+                })
             // if user is found and password is right
             // create a token with only our given payload
         // we don't want to pass in the entire user since that has the password
@@ -197,5 +260,7 @@ var login=function(req,res){
     adduser:adduser,
     login:login,
     finduser:finduser,
-    deleteuser:deleteuser
+    deleteuser:deleteuser,
+    updateOffline:updateOffline,
+    findOnline:findOnline
 }

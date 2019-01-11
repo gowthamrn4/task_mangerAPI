@@ -7,9 +7,8 @@ var userModel=new Schema({
     email:String,
     password:String,
     role:String,
-    
-
-});
+    status:Number
+    });
 
 
 
