@@ -20,10 +20,14 @@
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.18.3",
     "express": "^4.16.4",
+    "http": "0.0.0",
     "jsonwebtoken": "^8.4.0",
     "mongoose": "^5.4.3",
     "morgan": "^1.9.1",
+    "node-datetime": "^2.1.2",
     "node-restful": "^0.2.6",
-    "nodemon": "^1.18.9"
+    "nodemon": "^1.18.9",
+    "socket.io": "^2.2.0",
+    "socket.io-client": "^2.2.0"
   }
 }

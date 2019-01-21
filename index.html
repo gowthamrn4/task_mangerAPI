@@ -1,0 +1,37 @@
+<html>
+    <head>
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+   <script src="socket.js"></script>
+   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
+    </head>
+    <style>
+    body{
+      margin: 30px;
+    }
+    </style>
+    <body>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                  <div class="well">
+                      <h3>Online Users</h3>
+                      <ul class="list-group" id="users"></ul>
+                  </div>
+                </div>
+                <div class="col-md-8">
+                     <div class="chat" id="chat"></div>
+                     <form id="messageForm">
+                         <div class="form-group">
+                             <textarea class="form-control" id="message"></textarea>
+                            <br/>
+                            <input type="submit" class="btn btn-primary">
+                            </div>
+                     </form>
+                </div>
+            </div>
+        </div>
+
+
+        
+    </body>
+</html>
