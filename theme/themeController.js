@@ -46,7 +46,15 @@ var findTheme = function(req,res){
     })
 }
 
+var getallTheme = function(req,res){
+    themeModel.find(function(err,result){
+        if(!err){
+            res.send(result)
+        }
+    })
+}
 module.exports = {
     addTheme:addTheme,
-    findTheme:findTheme
+    findTheme:findTheme,
+    getallTheme:getallTheme
 }
