@@ -8,6 +8,8 @@ var subtaskModel = new Schema({
    inchargeName:String,
    createDate:String,
    description:String,
+   taskTime:String,
+   status:Number
 });
 
 module.exports = mongoose.model('subTask', subtaskModel)

@@ -7,8 +7,8 @@ var path = require("path");
 let app = express();
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
-//  var db = mongoose.connect("mongodb://localhost:27017/taskManager",{ useNewUrlParser: true });
- var db = mongoose.connect("mongodb://gowthamrn:Gowthamrn4@ds253324.mlab.com:53324/task_manager",{ useNewUrlParser: true });
+ var db = mongoose.connect("mongodb://localhost:27017/taskManager",{ useNewUrlParser: true });
+//  var db = mongoose.connect("mongodb://gowthamrn:Gowthamrn4@ds253324.mlab.com:53324/task_manager",{ useNewUrlParser: true });
 
 const mongodb = require('mongodb');
 var config = require('./config');
@@ -35,6 +35,7 @@ const messageRouting = require('./message/messageRouting');
 const taskRouting = require('./task/taskRouting');
 const themeRouting = require('./theme/themeRouting');
 const subTaskRouting = require('./sub_task/subTaskRouting');
+const userprofileRouting = require('./userprofile/userprofileRouting');
 
 app.set('json spaces', 40);
 app.use(bodyParser.json());
@@ -52,6 +53,7 @@ app.use('/message',messageRouting);
 app.use('/task',taskRouting);
 app.use('/theme',themeRouting);
 app.use('/sub_task',subTaskRouting);
+app.use('/userprofile',userprofileRouting)
 var port = process.env.PORT || (3000);
 
 app.listen(port, () => console.log(`Running on localhost:3000`));

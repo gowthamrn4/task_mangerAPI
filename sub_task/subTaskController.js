@@ -1,6 +1,8 @@
 var subTaskModel = require('./subTaskModel');
-var express     = require('express');
-
+var app     = require('express');
+var multer  = require('multer')
+var fs = require('fs');
+var upload = multer({ dest: './uploads/' })
 
 var addSubTask = function(req,res){
     var subTask = new subTaskModel(req.body);
@@ -33,7 +35,23 @@ var findSubTask = function(req,res){
     })
 }
 
+var deleteAll = function(req,res){
+    subTaskModel.deleteMany(function(err,result){
+        if(!err){
+            res.send(result)
+        }
+    })
+}
+var findallTask =function(req,res){
+    subTaskModel.find(function(err,result){
+        if(!err){
+            res.send(result);
+        }
+    })
+}
 module.exports = {
   addSubTask:addSubTask,
-  findSubTask:findSubTask
+  findSubTask:findSubTask,
+  deleteAll:deleteAll,
+  findallTask:findallTask
 }
